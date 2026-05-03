@@ -215,9 +215,6 @@ This creates a `dist` folder with optimized production files.
 
 This project is licensed under the MIT License.
 
-## Support
-
-For support, email support@carrental.com or open an issue in the repository.
 
 ## Acknowledgments
 

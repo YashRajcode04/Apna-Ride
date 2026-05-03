@@ -51,7 +51,7 @@ app.use(cors({
     // Allow same-origin/non-browser requests (no origin header)
     if (!origin) return callback(null, true);
 
-    if (allowedOrigins.includes(origin)) {
+    if (allowedOrigins.includes(origin) || origin.endsWith('.vercel.app')) {
       return callback(null, true);
     }
 

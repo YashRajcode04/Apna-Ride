@@ -77,13 +77,22 @@ app.use(passport.initialize());
 // ========================================
 // ROUTES
 // ========================================
-app.use('/api/auth', authRoutes);  // New comprehensive auth routes
-app.use('/api/cars', carRoutes);
-app.use('/api/users', userRoutes);
-app.use('/api/bookings', bookingRoutes);
-app.use('/api/payments', paymentRoutes);
-app.use('/api/reviews', reviewRoutes);
-app.use('/api/admin', adminRoutes);
+// Mount routes for both /api/ and root (for Vercel compatibility)
+const mountRoutes = (pathPrefix = '') => {
+  app.use(`${pathPrefix}/auth`, authRoutes);
+  app.use(`${pathPrefix}/cars`, carRoutes);
+  app.use(`${pathPrefix}/users`, userRoutes);
+  app.use(`${pathPrefix}/bookings`, bookingRoutes);
+  app.use(`${pathPrefix}/payments`, paymentRoutes);
+  app.use(`${pathPrefix}/reviews`, reviewRoutes);
+  app.use(`${pathPrefix}/admin`, adminRoutes);
+};
+
+// Handle local development (/api/...)
+mountRoutes('/api');
+
+// Handle Vercel deployment (where /api might be stripped)
+mountRoutes('');
 
 // Health check
 app.get('/', (req, res) => {

@@ -100,8 +100,7 @@ const seedDatabase = async () => {
         isApproved: true,
         owner: owner1._id,
         images: [
-          { url: '/swift.jpg', public_id: 'swift-1' },
-          { url: '/poster2.jpg', public_id: 'swift-2' },
+          { url: '/swift.jpg', public_id: 'swift-1' }
         ],
         features: ['AC', 'Power Steering', 'ABS'],
         rules: ['Budget option', 'Use responsibly', 'Return on time'],
@@ -123,8 +122,7 @@ const seedDatabase = async () => {
         isApproved: true,
         owner: owner2._id,
         images: [
-          { url: '/balenoaplha.jpg', public_id: 'baleno-1' },
-          { url: '/baleno/baleno-exterior-right-side-.jpg', public_id: 'baleno-2' },
+          { url: '/baleno/baleno.jpg', public_id: 'baleno-1' }
         ],
         features: ['AC', 'Power Steering', 'Power Windows', 'ABS', 'Touchscreen'],
         rules: ['No smoking', 'Gentle driving required', 'Return on time'],
@@ -146,8 +144,7 @@ const seedDatabase = async () => {
         isApproved: true,
         owner: owner1._id,
         images: [
-          { url: '/honda/honda city.jpg', public_id: 'honda-1' },
-          { url: '/honda/New-Honda-City-VXO-interior.jpg', public_id: 'honda-2' },
+          { url: '/honda/honda city.jpg', public_id: 'honda-1' }
         ],
         features: ['AC', 'Power Steering', 'Power Windows', 'ABS', 'Airbags'],
         rules: ['No smoking', 'Return with full tank'],
@@ -169,8 +166,7 @@ const seedDatabase = async () => {
         isApproved: true,
         owner: owner2._id,
         images: [
-          { url: '/nexon/nexon.jpg', public_id: 'nexon-1' },
-          { url: '/nexon/nexoninterior.jpg', public_id: 'nexon-2' },
+          { url: '/nexon/nexon.jpg', public_id: 'nexon-1' }
         ],
         features: ['AC', 'Power Windows', 'ABS', 'Touchscreen'],
         rules: ['Student friendly', 'Budget option', 'No long distance'],
@@ -192,8 +188,7 @@ const seedDatabase = async () => {
         isApproved: true,
         owner: owner1._id,
         images: [
-          { url: '/legender/toyotafortunerlegender.jpg', public_id: 'fortuner-1' },
-          { url: '/legender/fortuner-legender-exterior-.jpg', public_id: 'fortuner-2' },
+          { url: '/fortuner_hero.png', public_id: 'fortuner-1' }
         ],
         features: ['AC', 'Power Steering', 'Power Windows', 'ABS', 'Airbags', 'Navigation System'],
         rules: ['No smoking', 'No pets', 'Return fuel as given'],
@@ -215,18 +210,17 @@ const seedDatabase = async () => {
         isApproved: true,
         owner: owner2._id,
         images: [
-          { url: '/creta.jpg', public_id: 'creta-1' },
-          { url: '/images.jpg', public_id: 'creta-2' },
+          { url: '/creta.jpg', public_id: 'creta-1' }
         ],
         features: ['AC', 'Power Steering', 'ABS', 'Airbags', 'Rear Camera'],
         rules: ['No smoking', 'No pets', 'Maximum km limit 500/day'],
       },
       {
-        name: 'BMW 3 Series',
+        name: 'BMW 7 Series',
         brand: 'BMW',
         type: 'Sedan',
         year: 2023,
-        model: '330i',
+        model: '740 Li',
         seats: 5,
         fuelType: 'Petrol',
         transmission: 'Automatic',
@@ -238,8 +232,7 @@ const seedDatabase = async () => {
         isApproved: true,
         owner: owner2._id,
         images: [
-          { url: '/bmw.jpg', public_id: 'bmw-1' },
-          { url: '/lambo.png', public_id: 'bmw-2' },
+          { url: '/bmw740_real.jpg', public_id: 'bmw-1' }
         ],
         features: ['Leather Seats', 'Moon Roof', 'Navigation', 'Bluetooth', 'Climate Control', 'Lane Assist'],
         rules: ['No smoking', 'Maintain speed limits', 'Return with full tank'],
@@ -249,7 +242,7 @@ const seedDatabase = async () => {
         brand: 'Mercedes',
         type: 'Sedan',
         year: 2023,
-        model: 'E200',
+        model: 'E 300',
         seats: 5,
         fuelType: 'Petrol',
         transmission: 'Automatic',
@@ -261,8 +254,7 @@ const seedDatabase = async () => {
         isApproved: true,
         owner: owner2._id,
         images: [
-          { url: '/eclass merc.jpg', public_id: 'mercedes-1' },
-          { url: '/poster.png', public_id: 'mercedes-2' },
+          { url: '/mercedes_real.jpg', public_id: 'mercedes-1' }
         ],
         features: ['Full Leather', 'Panoramic Roof', 'Premium Sound', 'Ambient Lighting', 'Air Suspension'],
         rules: ['Treated with care', 'Valet parking only', 'Clean driving record required'],
@@ -284,8 +276,7 @@ const seedDatabase = async () => {
         isApproved: true,
         owner: owner1._id,
         images: [
-          { url: '/Volkswagen-Virtus-GT-Plus-7-2.jpg', public_id: 'virtus-1' },
-          { url: '/images.jpg', public_id: 'virtus-2' },
+          { url: '/virtus_real.jpg', public_id: 'virtus-1' }
         ],
         features: ['Touchscreen', 'Climate Control', 'ABS', 'Power Windows', 'Rear Camera'],
         rules: ['No smoking', 'Return with full tank', 'Gentle driving required'],
@@ -307,8 +298,7 @@ const seedDatabase = async () => {
         isApproved: true,
         owner: owner2._id,
         images: [
-          { url: '/rangerover.jpg', public_id: 'rangerover-1' },
-          { url: '/poster2.jpg', public_id: 'rangerover-2' },
+          { url: '/rangerover_real.jpg', public_id: 'rangerover-1' }
         ],
         features: ['Full Leather', 'Panoramic Sunroof', 'Premium Sound System', 'Climate Control', 'Off-road Mode', 'Navigation'],
         rules: ['Treated with care', 'Valet parking only', 'Clean driving record required', 'No extreme off-roading'],
@@ -330,8 +320,7 @@ const seedDatabase = async () => {
         isApproved: true,
         owner: owner1._id,
         images: [
-          { url: '/urus.jpg', public_id: 'urus-1' },
-          { url: '/lambo.png', public_id: 'urus-2' },
+          { url: '/urus_real.jpg', public_id: 'urus-1' }
         ],
         features: ['Full Leather', 'Panoramic Roof', 'Advanced Navigation', 'Premium Sound System', 'Air Suspension', 'Sport Mode'],
         rules: ['Expert drivers only', 'Maximum 300km per day', 'Valet parking only', 'Full tank required'],
@@ -353,8 +342,7 @@ const seedDatabase = async () => {
         isApproved: true,
         owner: owner2._id,
         images: [
-          { url: '/porsche.jpg', public_id: 'porsche-1' },
-          { url: '/lambo.png', public_id: 'porsche-2' },
+          { url: '/porsche_real.jpg', public_id: 'porsche-1' }
         ],
         features: ['Full Leather', 'Satellite Navigation', 'Bose Sound System', 'Climate Control', 'Heated Seats'],
         rules: ['Professional drivers only', 'Maximum 200km per day', 'Highway driving restricted', 'Full insurance required'],

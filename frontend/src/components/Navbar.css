@@ -506,18 +506,13 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-.user-avatar {
+.user-avatar-img {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
-  color: #000000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 0.9rem;
+  object-fit: cover;
   box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+  border: 1.5px solid #d4af37;
 }
 
 .user-name {

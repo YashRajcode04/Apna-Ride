@@ -132,7 +132,7 @@
   height: 34px;
   padding: 0 10px;
   border-radius: 8px;
-  border: none;
+  border: 1px solid transparent;
   cursor: pointer;
   font-size: 0.78rem;
   font-weight: 700;
@@ -142,23 +142,29 @@
 }
 
 .btn-approve {
-  background: #d1fae5;
-  color: #065f46;
-  font-weight: 700;
+  background: #111827;
+  color: #d4af37;
+  border-color: #111827;
 }
 
 .btn-approve:hover {
-  background: #a7f3d0;
-  transform: scale(1.1);
+  background: #d4af37;
+  color: #111827;
+  border-color: #d4af37;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(212, 175, 55, 0.2);
 }
 
 .btn-delete {
   background: #fee2e2;
+  color: #991b1b;
+  border-color: #fca5a5;
 }
 
 .btn-delete:hover {
   background: #fecaca;
-  transform: scale(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(153, 27, 27, 0.1);
 }
 
 .loading-state {

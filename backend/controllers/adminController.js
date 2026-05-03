@@ -1,6 +1,7 @@
 import User from '../models/User.js';
 import Car from '../models/Car.js';
 import Booking from '../models/Booking.js';
+import Review from '../models/Review.js';
 
 // ========================================
 // ADMIN DASHBOARD STATS
@@ -28,7 +29,7 @@ export const getDashboardStats = async (req, res) => {
 
     // Revenue stats
     const completedBookings = await Booking.find({ status: 'completed' });
-    const totalRevenue = completedBookings.reduce((acc, b) => acc + b.totalPrice, 0);
+    const totalRevenue = completedBookings.reduce((acc, b) => acc + (b.totalPrice || 0), 0);
 
     // Category-wise car count
     const carsByCategory = await Car.aggregate([
@@ -197,13 +198,26 @@ export const deleteUser = async (req, res) => {
     }
 
     // Delete user's cars and bookings
+    const userCars = await Car.find({ owner: user._id });
+    const carIds = userCars.map(car => car._id);
+    
+    // Delete all bookings associated with user's cars
+    await Booking.deleteMany({ car: { $in: carIds } });
+    
+    // Delete user's own cars
     await Car.deleteMany({ owner: user._id });
+    
+    // Delete user's own bookings (bookings they made)
     await Booking.deleteMany({ user: user._id });
+    
+    // Delete user's reviews
+    await Review.deleteMany({ user: user._id });
+    
     await user.deleteOne();
 
     res.json({
       success: true,
-      message: 'User and associated data deleted successfully',
+      message: 'User and all associated data (cars, bookings, reviews) deleted successfully',
     });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
@@ -230,7 +244,7 @@ export const getAdminBookings = async (req, res) => {
     const total = await Booking.countDocuments(query);
 
     const bookings = await Booking.find(query)
-      .populate('car', 'name brand model pricePerDay images')
+      .populate('car', 'name brand model pricePerDay images owner')
       .populate('user', 'name email phone')
       .sort({ createdAt: -1 })
       .skip(skip)
@@ -311,9 +325,9 @@ export const deleteBooking = async (req, res) => {
       return res.status(404).json({ success: false, message: 'Booking not found' });
     }
 
-    // Make car available again
+    // Make car available again if the booking was confirmed or pending
     const car = await Car.findById(booking.car);
-    if (car) {
+    if (car && (booking.status === 'confirmed' || booking.status === 'pending')) {
       car.isAvailable = true;
       await car.save();
     }

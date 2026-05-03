@@ -2,19 +2,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 20px;
+  min-height: calc(100vh - 70px);
+  background: #f4f6f8;
+  padding: 40px 20px;
 }
 
 .payment-card {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+  border: 1px solid #e6e8ec;
   padding: 40px;
   width: 100%;
   max-width: 500px;
-  animation: slideUp 0.3s ease-out;
+  animation: slideUp 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 @keyframes slideUp {
@@ -31,21 +32,22 @@
 .payment-header {
   text-align: center;
   margin-bottom: 30px;
-  border-bottom: 2px solid #f0f0f0;
-  padding-bottom: 20px;
+  border-bottom: 1px solid #eef1f4;
+  padding-bottom: 24px;
 }
 
 .payment-header h2 {
-  color: #333;
-  font-size: 24px;
-  margin: 0;
-  margin-bottom: 10px;
+  color: #101828;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.02em;
 }
 
 .booking-amount {
-  color: #667eea;
-  font-size: 20px;
-  font-weight: 600;
+  color: #101828;
+  font-size: 1.8rem;
+  font-weight: 700;
   margin: 0;
 }
 
@@ -62,42 +64,44 @@
 }
 
 .form-section h3 {
-  color: #333;
-  font-size: 14px;
-  font-weight: 600;
+  color: #101828;
+  font-size: 0.85rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin: 0 0 10px 0;
+  letter-spacing: 0.08em;
+  margin: 0 0 12px 0;
 }
 
 .card-type-options {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  background: #f8f9fa;
-  padding: 15px;
-  border-radius: 8px;
+  gap: 12px;
+  background: #f8fafc;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #e6e8ec;
 }
 
 .card-type-options label {
   display: flex;
   align-items: center;
   cursor: pointer;
-  font-size: 14px;
-  color: #555;
+  font-size: 0.9rem;
+  color: #344054;
+  font-weight: 500;
   transition: color 0.2s ease;
 }
 
 .card-type-options label:hover {
-  color: #667eea;
+  color: #d4af37;
 }
 
 .card-type-options input[type='radio'] {
-  margin-right: 10px;
+  margin-right: 12px;
   cursor: pointer;
   width: 18px;
   height: 18px;
-  accent-color: #667eea;
+  accent-color: #111827;
 }
 
 .form-group {
@@ -107,35 +111,38 @@
 }
 
 .form-group label {
-  color: #555;
-  font-size: 14px;
-  font-weight: 500;
+  color: #344054;
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
 .form-group input {
-  padding: 12px;
-  border: 2px solid #e0e0e0;
-  border-radius: 6px;
-  font-size: 14px;
-  transition: all 0.3s ease;
-  font-family: 'Courier New', monospace;
+  padding: 14px 16px;
+  border: 1px solid #d9dee5;
+  border-radius: 9px;
+  font-size: 1rem;
+  color: #101828;
+  transition: all 0.2s ease;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 .form-group input:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: #d4af37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.12);
 }
 
 .form-group input:disabled {
-  background-color: #f5f5f5;
+  background-color: #f2f4f7;
+  color: #98a2b3;
   cursor: not-allowed;
 }
 
 .demo-text {
-  font-size: 12px;
-  color: #999;
-  font-style: italic;
+  font-size: 0.75rem;
+  color: #667085;
   margin-top: 4px;
 }
 
@@ -185,27 +192,33 @@
 
 .btn {
   flex: 1;
-  padding: 12px 20px;
-  font-size: 16px;
-  font-weight: 600;
+  padding: 14px 24px;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 700;
   border: none;
-  border-radius: 6px;
+  border-radius: 9px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: #111827;
+  color: #ffffff;
+  border: 1px solid #111827;
 }
 
 .btn-primary:hover:not(:disabled) {
+  background: #d4af37;
+  border-color: #d4af37;
+  color: #111827;
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.25);
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
 }
 
 .btn-primary:disabled {

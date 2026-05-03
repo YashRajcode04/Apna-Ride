@@ -1,4 +1,6 @@
 import Car from '../models/Car.js';
+import Booking from '../models/Booking.js';
+import Review from '../models/Review.js';
 import mongoose from 'mongoose';
 
 const isValidObjectId = (value) => mongoose.Types.ObjectId.isValid(value);
@@ -350,11 +352,17 @@ export const deleteCar = async (req, res) => {
       return res.status(401).json({ success: false, message: 'Not authorized' });
     }
 
+    // Delete all bookings associated with this car
+    await Booking.deleteMany({ car: car._id });
+    
+    // Delete all reviews associated with this car
+    await Review.deleteMany({ car: car._id });
+
     await car.deleteOne();
 
     res.json({
       success: true,
-      message: 'Car removed',
+      message: 'Car and associated data (bookings, reviews) removed',
     });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });

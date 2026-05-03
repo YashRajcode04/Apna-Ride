@@ -9,6 +9,7 @@ const Sidebar = () => {
   const displayUser =
     user || JSON.parse(sessionStorage.getItem('userInfo') || '{"role": "user", "name": "User"}');
   const isAdmin = displayUser.role === 'admin';
+  const isOwner = displayUser.role === 'owner';
 
   const userMenuItems = [
     { path: '/dashboard', icon: 'DB', label: 'Dashboard' },
@@ -24,7 +25,14 @@ const Sidebar = () => {
     { path: '/list-car', icon: 'AD', label: 'Add Car' },
   ];
 
-  const menuItems = isAdmin ? adminMenuItems : userMenuItems;
+  const ownerMenuItems = [
+    { path: '/dashboard', icon: 'DB', label: 'Dashboard' },
+    { path: '/manage-cars', icon: 'CR', label: 'Manage Cars' },
+    { path: '/manage-bookings', icon: 'BK', label: 'Manage Bookings' },
+    { path: '/list-car', icon: 'AD', label: 'Add Car' },
+  ];
+
+  const menuItems = isAdmin ? adminMenuItems : (isOwner ? ownerMenuItems : userMenuItems);
 
   return (
     <aside className="sidebar">

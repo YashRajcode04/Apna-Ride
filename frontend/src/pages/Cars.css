@@ -59,7 +59,8 @@
 
 .search-box input:focus {
   outline: none;
-  border-color: #98a2b3;
+  border-color: #d4af37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.12);
 }
 
 .search-btn,
@@ -68,6 +69,7 @@
 .sort-wrap {
   height: 42px;
   border-radius: 9px;
+  transition: all 0.2s ease;
 }
 
 .search-btn {
@@ -80,6 +82,13 @@
   text-transform: uppercase;
   font-weight: 700;
   cursor: pointer;
+}
+
+.search-btn:hover {
+  background: #d4af37;
+  border-color: #d4af37;
+  color: #1a1a1a;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
 }
 
 .toolbar-actions {
@@ -100,6 +109,11 @@
   cursor: pointer;
 }
 
+.toolbar-reset-btn:hover {
+  border-color: #d4af37;
+  color: #d4af37;
+}
+
 .filter-toggle {
   border: 1px solid #d9dee5;
   background: #ffffff;
@@ -109,6 +123,10 @@
   align-items: center;
   gap: 8px;
   cursor: pointer;
+}
+
+.filter-toggle:hover {
+  border-color: #1a1a1a;
 }
 
 .filter-toggle svg {
@@ -146,6 +164,10 @@
   background: #ffffff;
 }
 
+.sort-wrap:hover {
+  border-color: #1a1a1a;
+}
+
 .sort-wrap label {
   font-size: 0.7rem;
   letter-spacing: 0.08em;
@@ -159,6 +181,7 @@
   background: transparent;
   color: #344054;
   font-size: 0.86rem;
+  cursor: pointer;
 }
 
 .sort-wrap select:focus {

@@ -6,26 +6,34 @@ import { useEffect, useState } from 'react';
 import API from '../utils/api';
 import { initAllScrollAnimations } from '../utils/scrollAnimations';
 
+const STATS = [
+  { value: '10,000+', label: 'Happy Customers' },
+  { value: '500+',    label: 'Premium Cars' },
+  { value: '25+',     label: 'Cities Covered' },
+  { value: '4.9★',   label: 'Average Rating' },
+];
+
 const Home = () => {
   const [featuredCars, setFeaturedCars] = useState([]);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [parallaxOffset, setParallaxOffset] = useState(0);
+  const [showTop, setShowTop] = useState(false);
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterDone, setNewsletterDone] = useState(false);
 
-  // Track scroll for parallax effect
+  // Track scroll for parallax + back-to-top
   useEffect(() => {
     const handleScroll = () => {
       const windowHeight = window.innerHeight;
       const scrolled = window.scrollY;
       const progress = Math.min(scrolled / (windowHeight * 1.5), 1);
       setScrollProgress(progress);
-      
-      // Parallax effect - background moves slower than scroll (0.5x speed)
       setParallaxOffset(scrolled * 0.5);
+      setShowTop(scrolled > 400);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
-
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -40,45 +48,43 @@ const Home = () => {
         setFeaturedCars([]);
       }
     };
-
     fetchFeaturedCars();
   }, []);
 
-  // Initialize scroll animations after component mounts
+  // Initialize scroll animations
   useEffect(() => {
-    // Small delay to ensure DOM is fully rendered
     const timer = setTimeout(() => {
       const cleanup = initAllScrollAnimations();
-      
-      // Cleanup on unmount
-      return () => {
-        if (cleanup && typeof cleanup === 'function') {
-          cleanup();
-        }
-      };
+      return () => { if (cleanup && typeof cleanup === 'function') cleanup(); };
     }, 100);
-
     return () => clearTimeout(timer);
-  }, [featuredCars]); // Re-run when cars are loaded
+  }, [featuredCars]);
+
+  const handleNewsletterSubmit = (e) => {
+    e.preventDefault();
+    if (!newsletterEmail) return;
+    setNewsletterDone(true);
+    setNewsletterEmail('');
+  };
+
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
     <div className="home">
-      {/* Hero Section with Porsche Image Background */}
+      {/* Hero Section */}
       <section className="hero">
-        {/* Background Image with Parallax */}
         <div className="hero-video-container">
-          <div 
-            className="hero-background-image" 
-            style={{ 
+          <div
+            className="hero-background-image"
+            style={{
               backgroundImage: 'url(/poster.png)',
               transform: `translateY(${parallaxOffset}px)`,
             }}
-          ></div>
-          <div className="hero-overlay"></div>
+          />
+          <div className="hero-overlay" />
         </div>
 
-        {/* Hero Content */}
-        <div 
+        <div
           className="hero-content"
           style={{
             transform: `translateY(${scrollProgress * 50}px)`,
@@ -87,14 +93,26 @@ const Home = () => {
         >
           <div className="hero-text-wrapper">
             <span className="hero-badge">Apna Ride - India's Premier</span>
-            <h1 className="hero-title">
-              Drive Your Dreams
-            </h1>
+            <h1 className="hero-title">Drive Your Dreams</h1>
             <p className="hero-description">
               Experience luxury on wheels across India.
             </p>
           </div>
           <SearchBar />
+        </div>
+      </section>
+
+      {/* Trust Stats Bar */}
+      <section className="stats-bar scroll-reveal">
+        <div className="container">
+          <div className="stats-grid">
+            {STATS.map((stat) => (
+              <div key={stat.label} className="stat-item">
+                <span className="stat-value">{stat.value}</span>
+                <span className="stat-label">{stat.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -107,11 +125,16 @@ const Home = () => {
           </div>
 
           <div className="cars-grid">
-            {featuredCars.map((car, index) => (
-              <div key={car._id} className="scroll-reveal">
-                <CarCard car={car} />
-              </div>
-            ))}
+            {featuredCars.length > 0
+              ? featuredCars.map((car, index) => (
+                  <div key={car._id} className="scroll-reveal" style={{ transitionDelay: `${index * 0.07}s` }}>
+                    <CarCard car={car} />
+                  </div>
+                ))
+              : [...Array(6)].map((_, i) => (
+                  <div key={i} className="car-card-skeleton" />
+                ))
+            }
           </div>
 
           <div className="view-all-container scroll-reveal">
@@ -134,7 +157,7 @@ const Home = () => {
               List your car
             </Link>
           </div>
-          <div 
+          <div
             className="banner-image"
             style={{
               transform: `translateY(${scrollProgress * -30}px) scale(${1 + scrollProgress * 0.05})`,
@@ -153,44 +176,43 @@ const Home = () => {
           </div>
 
           <div className="testimonials-grid">
-            <div 
-              className="testimonial-card scroll-reveal scroll-stagger-1"
-              style={{
-                transform: `translateY(${scrollProgress * -10}px)`,
-              }}
-            >
-              <img src="/images.jpg" alt="Priya Sharma" />
-              <h4>Priya Sharma</h4>
-              <p className="location">Mumbai, Maharashtra</p>
-              <div className="rating">Rating 5.0 / 5</div>
-              <p className="comment">"Booked a BMW for my Delhi trip. Seamless experience, great car condition, and doorstep delivery. Highly recommended!"</p>
-            </div>
-
-            <div 
-              className="testimonial-card scroll-reveal scroll-stagger-2"
-              style={{
-                transform: `translateY(${scrollProgress * -20}px)`,
-              }}
-            >
-              <img src="/images4.jpg" alt="Sneha Patel" />
-              <h4>Sneha Patel</h4>
-              <p className="location">Bangalore, Karnataka</p>
-              <div className="rating">Rating 5.0 / 5</div>
-              <p className="comment">"Perfect for my Goa road trip. The car was in excellent condition and customer support was responsive throughout."</p>
-            </div>
-
-            <div 
-              className="testimonial-card scroll-reveal scroll-stagger-3"
-              style={{
-                transform: `translateY(${scrollProgress * -10}px)`,
-              }}
-            >
-              <img src="/testimonial_image_1-CoRIPhVu.png" alt="Anjali Mehta" />
-              <h4>Anjali Mehta</h4>
-              <p className="location">Pune, Maharashtra</p>
-              <div className="rating">Rating 5.0 / 5</div>
-              <p className="comment">"Best car rental service in India! The rates are competitive and the fleet includes both luxury and budget options."</p>
-            </div>
+            {[
+              {
+                img: '/images.jpg',
+                name: 'Priya Sharma',
+                location: 'Mumbai, Maharashtra',
+                rating: 5,
+                comment: '"Booked a BMW for my Delhi trip. Seamless experience, great car condition, and doorstep delivery. Highly recommended!"',
+              },
+              {
+                img: '/images4.jpg',
+                name: 'Sneha Patel',
+                location: 'Bangalore, Karnataka',
+                rating: 5,
+                comment: '"Perfect for my Goa road trip. The car was in excellent condition and customer support was responsive throughout."',
+              },
+              {
+                img: '/testimonial_image_1-CoRIPhVu.png',
+                name: 'Anjali Mehta',
+                location: 'Pune, Maharashtra',
+                rating: 5,
+                comment: '"Best car rental service in India! The rates are competitive and the fleet includes both luxury and budget options."',
+              },
+            ].map((t, i) => (
+              <div
+                key={t.name}
+                className={`testimonial-card scroll-reveal scroll-stagger-${i + 1}`}
+                style={{ transform: `translateY(${scrollProgress * -10}px)` }}
+              >
+                <img src={t.img} alt={t.name} />
+                <h4>{t.name}</h4>
+                <p className="location">{t.location}</p>
+                <div className="testimonial-stars">
+                  {'★'.repeat(t.rating)}{'☆'.repeat(5 - t.rating)}
+                </div>
+                <p className="comment">{t.comment}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -201,16 +223,39 @@ const Home = () => {
           <div className="newsletter-content">
             <h2>Never Miss a Deal!</h2>
             <p>Subscribe to receive exclusive offers, festival discounts, and new vehicle arrivals</p>
-            <form className="newsletter-form">
-              <input type="email" placeholder="Enter your email" />
-              <button type="submit">Subscribe</button>
-            </form>
+            {newsletterDone ? (
+              <div className="newsletter-success">
+                <span className="success-icon">✓</span>
+                <span>You're subscribed! Deals coming your way.</span>
+              </div>
+            ) : (
+              <form className="newsletter-form" onSubmit={handleNewsletterSubmit}>
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
+                  required
+                />
+                <button type="submit">Subscribe</button>
+              </form>
+            )}
           </div>
           <div className="newsletter-image">
             <img src="/banner_car_image.png" alt="Premium Car" />
           </div>
         </div>
       </section>
+
+      {/* Back to Top */}
+      <button
+        className={`back-to-top ${showTop ? 'visible' : ''}`}
+        onClick={scrollToTop}
+        aria-label="Back to top"
+        title="Back to top"
+      >
+        ↑
+      </button>
     </div>
   );
 };

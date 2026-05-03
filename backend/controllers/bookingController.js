@@ -279,8 +279,18 @@ export const verifyBookingPayment = async (req, res) => {
 // @access  Private
 export const getMyBookings = async (req, res) => {
   try {
-    const bookings = await Booking.find({ user: req.user._id })
+    // Find cars owned by the user
+    const myCars = await Car.find({ owner: req.user._id }).select('_id');
+    const myCarIds = myCars.map(c => c._id);
+
+    const bookings = await Booking.find({ 
+      $or: [
+        { user: req.user._id },
+        { car: { $in: myCarIds } }
+      ]
+    })
       .populate('car')
+      .populate('user', 'name email phone')
       .sort({ createdAt: -1 });
 
     res.json({
@@ -425,23 +435,25 @@ export const cancelBooking = async (req, res) => {
     }
 
     // Check if user is booking owner
-    if (booking.user.toString() !== req.user._id.toString() && req.user.role !== 'admin') {
-      return res.status(401).json({ success: false, message: 'Not authorized' });
+    // Check if user is booking owner OR car owner
+    const car = await Car.findById(booking.car);
+    const isCarOwner = car && car.owner.toString() === req.user._id.toString();
+    
+    if (booking.user.toString() !== req.user._id.toString() && !isCarOwner && req.user.role !== 'admin') {
+      return res.status(401).json({ success: false, message: 'Not authorized to cancel this booking' });
     }
 
-    booking.status = 'cancelled';
-    await booking.save();
-
     // Make car available again
-    const car = await Car.findById(booking.car);
-    if (car) {
+    if (car && (booking.status === 'confirmed' || booking.status === 'pending')) {
       car.isAvailable = true;
       await car.save();
     }
 
+    await booking.deleteOne();
+
     res.json({
       success: true,
-      message: 'Booking cancelled',
+      message: 'Booking removed successfully',
     });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });

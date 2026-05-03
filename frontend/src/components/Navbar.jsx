@@ -143,7 +143,11 @@ const Navbar = ({ scrollProgress = 0 }) => {
                   className="user-button"
                   onClick={() => setShowUserDropdown(!showUserDropdown)}
                 >
-                  <span className="user-avatar">{user.name.charAt(0).toUpperCase()}</span>
+                  <img 
+                    src={user.profilePicture || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=111827&color=d4af37&bold=true&rounded=true`} 
+                    alt={user.name} 
+                    className="user-avatar-img" 
+                  />
                   <span className="user-name">{user.name}</span>
                   <span className="dropdown-arrow">{showUserDropdown ? '▲' : '▼'}</span>
                 </button>

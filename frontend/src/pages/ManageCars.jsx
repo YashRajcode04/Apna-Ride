@@ -25,6 +25,7 @@ const initialCarForm = {
 const ManageCars = () => {
   const { user } = useContext(AuthContext);
   const isAdmin = user?.role === 'admin';
+  const isOwner = user?.role === 'owner';
 
   const [cars, setCars] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -170,7 +171,7 @@ const ManageCars = () => {
               ? 'View, approve and manage all cars listed on the platform'
               : 'Manage your listed cars and check approval status'}
           </p>
-          {isAdmin && (
+          {(isAdmin || isOwner) && (
             <button type="button" className="primary-btn" onClick={openCreateForm}>
               Add New Car
             </button>
@@ -296,7 +297,7 @@ const ManageCars = () => {
                               Reject
                             </button>
                           )}
-                          {isAdmin && (
+                          {(isAdmin || isOwner) && (
                             <button
                               className="btn-edit"
                               onClick={() => openEditForm(car)}

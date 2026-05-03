@@ -1,0 +1,137 @@
+.manage-users-content {
+  flex: 1;
+  padding: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.users-search {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.users-search input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+}
+
+.users-search button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #111827;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.users-summary {
+  margin-bottom: 12px;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.users-table-container {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.users-table thead {
+  background: #f9fafb;
+}
+
+.users-table th,
+.users-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.users-table th {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #6b7280;
+}
+
+.users-table td select {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 6px 8px;
+  background: #ffffff;
+}
+
+.btn-delete {
+  border: none;
+  border-radius: 6px;
+  padding: 8px 10px;
+  background: #fee2e2;
+  color: #991b1b;
+  cursor: pointer;
+}
+
+.btn-delete:hover {
+  background: #fecaca;
+}
+
+.loading-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6b7280;
+}
+
+.pagination {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.pagination button {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #111827;
+  padding: 8px 12px;
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.pagination button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+@media (max-width: 968px) {
+  .manage-users-content {
+    padding: 20px;
+  }
+
+  .users-table-container {
+    overflow-x: auto;
+  }
+
+  .users-table {
+    min-width: 900px;
+  }
+
+  .pagination {
+    justify-content: center;
+  }
+}

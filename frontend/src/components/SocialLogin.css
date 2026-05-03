@@ -1,0 +1,111 @@
+/* ============================================
+   SOCIAL LOGIN BUTTONS STYLING
+   ============================================ */
+
+.social-login-container {
+  margin: 30px 0;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 30px 0 20px;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #ddd;
+}
+
+.divider span {
+  padding: 0 15px;
+  color: #666;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.social-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  color: #333;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.social-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  border-color: #999;
+}
+
+.social-btn:active {
+  transform: translateY(0);
+}
+
+.social-btn svg {
+  flex-shrink: 0;
+}
+
+/* Google Button */
+.google-btn:hover {
+  background: #f8f9fa;
+  border-color: #EA4335;
+}
+
+/* GitHub Button */
+.github-btn {
+  background: #24292e;
+  color: white;
+  border-color: #24292e;
+}
+
+.github-btn:hover {
+  background: #2f363d;
+  border-color: #2f363d;
+}
+
+/* Facebook Button */
+.facebook-btn {
+  background: #1877f2;
+  color: white;
+  border-color: #1877f2;
+}
+
+.facebook-btn:hover {
+  background: #166fe5;
+  border-color: #166fe5;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .social-btn {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+  
+  .divider span {
+    font-size: 11px;
+  }
+}

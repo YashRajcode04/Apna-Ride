@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="200" viewBox="0 0 320 200" role="img" aria-label="Car placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#eff6ff" />
+      <stop offset="100%" stop-color="#dbeafe" />
+    </linearGradient>
+  </defs>
+  <rect width="320" height="200" rx="16" fill="url(#bg)" />
+  <g fill="none" stroke="#2563eb" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" transform="translate(40 78)">
+    <path d="M22 44h176c8 0 14-6 14-14v-6c0-6-4-11-10-13l-22-7c-3-1-6-1-8-1H78c-4 0-8 1-11 4L42 30H22c-6 0-10 4-10 10v4c0 6 4 10 10 10z"/>
+    <circle cx="62" cy="44" r="16" fill="#bfdbfe"/>
+    <circle cx="164" cy="44" r="16" fill="#bfdbfe"/>
+  </g>
+  <text x="160" y="178" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#1e40af">Image coming soon</text>
+</svg>

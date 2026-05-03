@@ -1,0 +1,780 @@
+/* ============================================
+   PREMIUM NAVBAR - Porsche-Inspired Design
+   Smooth transitions and elegant hover effects
+   ============================================ */
+
+/* Import Porsche-style font - Outfit (similar to Porsche's custom font) */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: transparent;
+  box-shadow: none;
+  z-index: 1000;
+  padding: 0;
+  transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Light navbar on white background */
+.navbar:not(.navbar-dark) {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(15px) saturate(180%);
+  -webkit-backdrop-filter: blur(15px) saturate(180%);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Dark navbar on black background */
+.navbar.navbar-dark {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Scrolled state - enhanced glassmorphism */
+.navbar.scrolled:not(.navbar-dark) {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+.navbar.scrolled.navbar-dark {
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.navbar.navbar-dark .navbar-logo,
+.navbar.navbar-dark .navbar-menu li a,
+.navbar.navbar-dark .navbar-menu li button,
+.navbar.navbar-dark .user-button {
+  color: #ffffff;
+}
+
+.navbar.navbar-dark .navbar-toggle span {
+  background: #ffffff;
+}
+
+/* Active link highlighting */
+.navbar-menu li a.active:not(.list-car-btn):not(.login-btn) {
+  color: #d4af37;
+  font-weight: 600;
+}
+
+.navbar-menu li a.active:not(.list-car-btn):not(.login-btn)::after {
+  transform: scaleX(1);
+  background: linear-gradient(90deg, #d4af37 0%, #f4d03f 100%);
+}
+
+.navbar.navbar-dark .navbar-menu li a.active:not(.list-car-btn):not(.login-btn) {
+  color: #f4d03f;
+}
+
+.navbar.navbar-dark .navbar-menu li a.active:not(.list-car-btn):not(.login-btn)::after {
+  background: linear-gradient(90deg, #f4d03f 0%, #ffffff 100%);
+}
+
+.navbar.navbar-dark .navbar-menu li a::after,
+.navbar.navbar-dark .navbar-menu li button::after {
+  background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+}
+
+/* Scrolled state - subtle transparency and smaller padding */
+.navbar.scrolled:not(.navbar-dark) {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.2rem 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: padding 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* Compact padding when scrolled */
+.navbar.scrolled .navbar-container {
+  padding: 0.8rem 40px;
+}
+
+/* Premium logo with Porsche-style typography */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.navbar-logo:hover {
+  transform: translateX(3px);
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #000000;
+  font-family: 'Outfit', sans-serif;
+  transition: all 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+  position: relative;
+}
+
+/* Dark mode logo text */
+.navbar.navbar-dark .logo-text {
+  color: #ffffff;
+}
+
+/* Premium underline effect for logo */
+.logo-text::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, #d4af37 0%, transparent 100%);
+  transition: width 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.navbar-logo:hover .logo-text::after {
+  width: 100%;
+}
+
+/* Hamburger toggle - Porsche minimal style */
+.navbar-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  padding: 8px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.navbar-toggle span {
+  width: 28px;
+  height: 2px;
+  background: #000000;
+  border-radius: 0;
+  transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.navbar.navbar-dark .navbar-toggle span {
+  background: #ffffff;
+}
+
+/* Animated hamburger icon - clean X transformation */
+.navbar-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translateY(7px);
+}
+
+.navbar-toggle.active span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.navbar-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-7px);
+}
+
+/* Premium navigation menu */
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  gap: 40px;
+  align-items: center;
+  font-family: 'Outfit', sans-serif;
+}
+
+.mobile-close-item {
+  display: none;
+}
+
+.mobile-close-btn {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #111827;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  padding: 10px 14px;
+}
+
+/* Premium nav menu with smooth underline hover effect */
+.navbar-menu li a,
+.navbar-menu li button {
+  padding: 8px 0;
+  border-radius: 0;
+  transition: all 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+  background: none;
+  color: #000000;
+  position: relative;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+/* Dark mode menu items */
+.navbar.navbar-dark .navbar-menu li a:not(.list-car-btn):not(.login-btn),
+.navbar.navbar-dark .navbar-menu li button:not(.list-car-btn):not(.login-btn):not(.logout-btn):not(.user-button) {
+  color: #ffffff;
+}
+
+/* Elegant underline animation on hover */
+.navbar-menu li a:not(.list-car-btn):not(.login-btn)::after,
+.navbar-menu li button:not(.list-car-btn):not(.login-btn):not(.logout-btn):not(.user-button)::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #000000;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* Dark mode underline */
+.navbar.navbar-dark .navbar-menu li a:not(.list-car-btn):not(.login-btn)::after,
+.navbar.navbar-dark .navbar-menu li button:not(.list-car-btn):not(.login-btn):not(.logout-btn):not(.user-button)::after {
+  background: #ffffff;
+}
+
+.navbar-menu li a:not(.list-car-btn):not(.login-btn):hover::after,
+.navbar-menu li button:not(.list-car-btn):not(.login-btn):not(.logout-btn):not(.user-button):hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.navbar-menu li a:not(.list-car-btn):not(.login-btn):hover,
+.navbar-menu li button:not(.list-car-btn):not(.login-btn):not(.logout-btn):not(.user-button):hover {
+  color: #d4af37;
+  background: transparent;
+}
+
+/* Enhanced CTA buttons with modern styling */
+.list-car-btn,
+.login-btn {
+  background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%) !important;
+  color: #ffffff !important;
+  padding: 12px 28px !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  letter-spacing: 0.05em !important;
+  border: 2px solid transparent !important;
+  transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1) !important;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.list-car-btn::before,
+.login-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.list-car-btn:hover::before,
+.login-btn:hover::before {
+  left: 100%;
+}
+
+.btn-icon {
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Dark mode CTA buttons */
+.navbar.navbar-dark .list-car-btn,
+.navbar.navbar-dark .login-btn {
+  background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%) !important;
+  color: #000000 !important;
+  border-color: transparent !important;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+.list-car-btn:hover,
+.login-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+}
+
+.navbar.navbar-dark .list-car-btn:hover,
+.navbar.navbar-dark .login-btn:hover {
+  box-shadow: 0 6px 25px rgba(255, 255, 255, 0.3);
+}
+
+/* Modern User Dropdown Menu */
+.user-dropdown {
+  position: relative;
+}
+
+.user-menu {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.user-button {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 10px 18px;
+  border-radius: 30px;
+  color: #000000;
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  transition: all 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+}
+
+.user-name {
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dropdown-arrow {
+  font-size: 0.7rem;
+  transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.navbar.navbar-dark .user-button {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.navbar.navbar-dark .user-avatar {
+  background: linear-gradient(135deg, #f4d03f 0%, #ffffff 100%);
+}
+
+.user-button:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.navbar.navbar-dark .user-button:hover {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Dropdown Content - Modern Card Style */
+.dropdown-content {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  min-width: 220px;
+  overflow: hidden;
+  z-index: 1001;
+  animation: dropdownSlide 0.3s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.navbar.navbar-dark .dropdown-content {
+  background: rgba(30, 30, 30, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes dropdownSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-content a,
+.dropdown-content button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  color: #1a1a1a;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+  cursor: pointer;
+}
+
+.navbar.navbar-dark .dropdown-content a,
+.navbar.navbar-dark .dropdown-content button {
+  color: #ffffff;
+}
+
+.dropdown-content a:hover,
+.dropdown-content button:hover {
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.1) 0%, transparent 100%);
+  padding-left: 24px;
+}
+
+.navbar.navbar-dark .dropdown-content a:hover,
+.navbar.navbar-dark .dropdown-content button:hover {
+  background: linear-gradient(90deg, rgba(244, 208, 63, 0.15) 0%, transparent 100%);
+}
+
+.dropdown-icon {
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+  margin: 4px 0;
+}
+
+.navbar.navbar-dark .dropdown-divider {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
+.user-button {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 10px 18px;
+  border-radius: 30px;
+  color: #000000;
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  transition: all 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+}
+
+.user-name {
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dropdown-arrow {
+  font-size: 0.7rem;
+  transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.navbar.navbar-dark .user-button {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.navbar.navbar-dark .user-avatar {
+  background: linear-gradient(135deg, #f4d03f 0%, #ffffff 100%);
+}
+
+.user-button:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.navbar.navbar-dark .user-button:hover {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Dropdown Content - Modern Card Style */
+.dropdown-content {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  min-width: 220px;
+  overflow: hidden;
+  z-index: 1001;
+  animation: dropdownSlide 0.3s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.navbar.navbar-dark .dropdown-content {
+  background: rgba(30, 30, 30, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes dropdownSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-content a,
+.dropdown-content button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  color: #1a1a1a;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+  cursor: pointer;
+}
+
+.navbar.navbar-dark .dropdown-content a,
+.navbar.navbar-dark .dropdown-content button {
+  color: #ffffff;
+}
+
+.dropdown-content a:hover,
+.dropdown-content button:hover {
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.1) 0%, transparent 100%);
+  padding-left: 24px;
+}
+
+.navbar.navbar-dark .dropdown-content a:hover,
+.navbar.navbar-dark .dropdown-content button:hover {
+  background: linear-gradient(90deg, rgba(244, 208, 63, 0.15) 0%, transparent 100%);
+}
+
+.dropdown-icon {
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+  margin: 4px 0;
+}
+
+.navbar.navbar-dark .dropdown-divider {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
+/* Mobile menu with Porsche-style animation */
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 1rem 20px;
+  }
+
+  .navbar-toggle {
+    display: flex;
+  }
+
+  .logo-text {
+    font-size: 1.25rem;
+  }
+
+  .navbar-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: #ffffff;
+    padding: 30px 20px;
+    gap: 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-20px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  .navbar.navbar-dark .navbar-menu {
+    background: #000000;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .navbar-menu.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .navbar-menu li {
+    width: 100%;
+    animation: slideInMenu 0.3s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+    opacity: 0;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+
+  .mobile-close-item {
+    display: block;
+    border-bottom: none;
+    padding-top: 0;
+  }
+
+  .mobile-close-btn {
+    width: 100%;
+  }
+  .navbar.navbar-dark .navbar-menu li {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Staggered menu item animations */
+  .navbar-menu.active li:nth-child(1) { animation-delay: 0.05s; }
+  .navbar-menu.active li:nth-child(2) { animation-delay: 0.1s; }
+  .navbar-menu.active li:nth-child(3) { animation-delay: 0.15s; }
+  .navbar-menu.active li:nth-child(4) { animation-delay: 0.2s; }
+  .navbar-menu.active li:nth-child(5) { animation-delay: 0.25s; }
+  .navbar-menu.active li:nth-child(6) { animation-delay: 0.3s; }
+  .navbar-menu.active li:nth-child(7) { animation-delay: 0.35s; }
+
+  .navbar-menu li a,
+  .navbar-menu li button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 8px 0;
+  }
+
+  .list-car-btn,
+  .login-btn {
+    text-align: center !important;
+    margin-top: 10px;
+  }
+  
+  .navbar-menu li a:not(.list-car-btn):not(.login-btn)::after,
+  .navbar-menu li button:not(.list-car-btn):not(.login-btn):not(.logout-btn):not(.user-button)::after {
+    left: 0;
+    right: auto;
+    width: 0;
+  }
+
+  .navbar-menu li a:not(.list-car-btn):not(.login-btn):hover::after,
+  .navbar-menu li button:not(.list-car-btn):not(.login-btn):not(.logout-btn):not(.user-button):hover::after {
+    width: 40px;
+  }
+
+  .user-menu {
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+  }
+
+  .user-button,
+  .logout-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Mobile menu slide-in animation */
+@keyframes slideInMenu {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .navbar,
+  .navbar-container,
+  .navbar-logo,
+  .navbar-toggle span,
+  .navbar-menu,
+  .navbar-menu li,
+  .navbar-menu li a::after,
+  .navbar-menu li button::after,
+  .list-car-btn,
+  .login-btn,
+  .user-button,
+  .logout-btn {
+    transition: none !important;
+    animation: none !important;
+  }
+}

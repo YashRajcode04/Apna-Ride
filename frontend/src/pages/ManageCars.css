@@ -1,0 +1,293 @@
+.manage-cars-content {
+  flex: 1;
+  padding: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.page-header {
+  margin-bottom: 30px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.page-header h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 8px 0;
+}
+
+.page-header p {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.primary-btn,
+.secondary-btn {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.primary-btn {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.primary-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.secondary-btn {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.admin-car-form-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.admin-car-form-card h3 {
+  margin: 0 0 12px;
+}
+
+.admin-car-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 10px;
+}
+
+.admin-car-form-grid input,
+.admin-car-form-grid select,
+.admin-car-form-grid textarea {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+}
+
+.admin-car-form-grid textarea {
+  resize: vertical;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.cars-table-container {
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.cars-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cars-table thead {
+  background: #f9fafb;
+}
+
+.cars-table th {
+  padding: 16px 20px;
+  text-align: left;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cars-table tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+  transition: background 0.2s ease;
+}
+
+.cars-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+.cars-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.cars-table td {
+  padding: 16px 20px;
+  font-size: 0.95rem;
+}
+
+.cars-table .car-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cars-table .car-info img {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.cars-table .car-info h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: 0 0 4px 0;
+}
+
+.cars-table .car-info span {
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+.category-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: #eff6ff;
+  color: #1e40af;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-available {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status-unavailable {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-pending {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.action-buttons button {
+  min-width: 86px;
+  height: 34px;
+  padding: 0 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.btn-edit {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.btn-edit:hover {
+  background: #dbeafe;
+  transform: scale(1.1);
+}
+
+.btn-delete {
+  background: #fee2e2;
+}
+
+.btn-delete:hover {
+  background: #fecaca;
+  transform: scale(1.1);
+}
+
+.btn-approve {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.btn-approve:hover {
+  background: #a7f3d0;
+  transform: scale(1.1);
+}
+
+.btn-reject {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.btn-reject:hover {
+  background: #fde68a;
+  transform: scale(1.1);
+}
+
+.loading-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-light);
+}
+
+@media (max-width: 968px) {
+  .manage-cars-content {
+    padding: 20px;
+  }
+
+  .admin-car-form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cars-table-container {
+    overflow-x: auto;
+  }
+
+  .cars-table {
+    min-width: 800px;
+  }
+}
+
+@media (max-width: 640px) {
+  .manage-cars-content {
+    padding: 15px;
+  }
+
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .admin-car-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
